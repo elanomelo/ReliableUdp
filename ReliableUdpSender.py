@@ -49,8 +49,9 @@ def establish_connection():
 try:
     if establish_connection():
         send()
-        sock.close()
 except socket.timeout:
     print("Ocorreu um erro ao enviar o pacote.")
 except Exception as e:
     print(str(e))
+
+sock.close()
