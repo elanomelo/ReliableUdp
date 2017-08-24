@@ -12,6 +12,7 @@ public class ReliableUdpReceiver {
 	
 	private static final double LOSS_RATE = 0.3;
 	private static final int AVERAGE_DELAY = 100;
+	private static final int PACKET_MAX_SIZE = 1024;
 	
 	private static String START_FLAG = "HELLO";	
 	private static String FINISH_FLAG = "BYE";
@@ -27,7 +28,7 @@ public class ReliableUdpReceiver {
 		DatagramSocket socket = new DatagramSocket(port);
 		
 		while(true) {
-			DatagramPacket request = new DatagramPacket(new byte[1024], 1024);
+			DatagramPacket request = new DatagramPacket(new byte[PACKET_MAX_SIZE], PACKET_MAX_SIZE);
 			socket.receive(request);
 			if (random.nextDouble() < LOSS_RATE) {
 				System.out.println(" Packet Loss.");
