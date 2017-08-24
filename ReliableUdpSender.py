@@ -8,11 +8,13 @@ sock = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 IP = "127.0.0.1"
 PORT = 8053
 # MESSAGE = "\x46" * 3000
+# Ao inves do ping, usar um texto qualquer para simular a entrega de pacotes (pedaços do texto)
 MESSAGE = requests.get('https://baconipsum.com/api/?type=meat-and-filler&paras=100&format=text').text
 MAX_LENGTH = 1024
 
 def send():
     ACK_COUNT = 1
+    # quebra o texto em chunks de MAX_LENGTH
     if len(MESSAGE) > MAX_LENGTH:
         buff = [ MESSAGE[i:i + MAX_LENGTH]  for i in range(0,len(MESSAGE),MAX_LENGTH)]
     else:
