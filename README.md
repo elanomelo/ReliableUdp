@@ -1,7 +1,7 @@
 # ReliableUdp
 
 
-Executar python ReliableUdpSender.py
+Executar **python ReliableUdpSender.py**
 
 O cliente utiliza o protocolo inventado "ReliableUdp", inicia uma conexão com a flag HELLO.
 O servidor retorna com um HELLO ACK. Depois disso está apto a enviar os pacotes recebendo
